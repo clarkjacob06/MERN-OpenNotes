@@ -1,8 +1,9 @@
 import formatDate from "../util/formatDate";;
-import {Link, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import api from '../lib/axios.js'
 import toast from "react-hot-toast";
 import styles from '../css/noteCard.module.css';
+import {Trash2} from 'lucide-react'
 
 function NoteCard({noteProp, setNotesProp}) {
 
@@ -21,7 +22,9 @@ function NoteCard({noteProp, setNotesProp}) {
             <div className={styles.noteCard} onClick={() => navigate(`/content/${noteProp._id}`)}>
                 <h1>{noteProp.title}</h1>
                 <p>{formatDate(new Date(noteProp.createdAt))}</p>
-                <button onClick={(e) => handleDelete(e, noteProp._id)}>Delete</button>
+                <div onClick={(e) => handleDelete(e, noteProp._id)} className={styles.deleteBtn}>
+                    <Trash2 className={styles.deleteIcon}/>
+                </div>
             </div>
     )
 }

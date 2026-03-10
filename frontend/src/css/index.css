@@ -7,14 +7,8 @@
     padding: 0;
 }
 
-.wrapper {
-    height: 100vh;
-    width: clamp(360px, 100vw, 1280px);
-}
-
-
 body {
-    /* background-color: black; */
+    /* background-color: yellow; */
     display: flex;
     align-items: center;
     justify-content: center;
