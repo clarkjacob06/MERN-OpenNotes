@@ -8,13 +8,14 @@ import styles from '../css/homePage.module.css';
 
 import {Pencil} from 'lucide-react';
 import {UserRound} from 'lucide-react';
+import {Plus} from 'lucide-react'
 
 function HomePage() {
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(true);
 
     useEffect(() => {
         async function fetchNotes() {
@@ -37,31 +38,52 @@ function HomePage() {
     }, []);
 
     useEffect(() => {
-        const handleResize = () => window.innerWidth > 768 && setIsMobile(false);
+        const handleResize = () => window.innerWidth >= 768 ? setIsMobile(false) : setIsMobile(true);
         
+        handleResize()
         window.addEventListener('resize', handleResize)
 
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
     return(
-        <div className="wrapper">
+        <div className={styles.wrapper}>
             <nav>
-                <h1>OpenNotes</h1>
+                <img src="/logo.png" alt="logo" className={styles.logo}/>
+                {!isMobile && <input type="search" placeholder='Search note' className={styles.searchBar}/>}
                 <div className={styles.user}>
                     <UserRound className={styles.userIcon}/>
                 </div>
             </nav>
-            <main>  
-                <input type="search" className={styles.searchBar}/>
 
-                {notes.length <= 0 && <h1>No notes yet</h1>}
+            {isMobile && <div className={styles.inputContainer}>
+                <input type="search" placeholder='Search note' className={styles.searchBar}/>    
+            </div>}
+
+            <main>  
+                {notes.length <= 0 && 
+                <div className={styles.emptyState}>
+                    <img src="/emptyState.png"/>
+                    
+                    <h1>Your Notepad is Empty.</h1>
+
+                    {isMobile ? <p>Tap here to add your first note!</p> : <p>Click here to add your first note!</p>}
+
+                    <div className={styles.createBtn} onClick={() => navigate('/create')}>
+                        <Plus className={styles.createIcon}></Plus>Create Note
+                    </div>
+                </div>
+                }
+
                 {loading && <div>Loading...</div>}
+
                 {notes.map((note) => (
                     <NoteCard noteProp={note} key={note._id} setNotesProp={setNotes}></NoteCard>
                 ))}
 
-                <button className={styles.createBtn} onClick={() => navigate('/create')}><Pencil className={styles.pencilIcon}/></button>
+                <button className={styles.pencilBtn} onClick={() => navigate('/create')}>
+                    <Pencil className={styles.pencilIcon}/>
+                </button>
             </main>
         </div>
     )
