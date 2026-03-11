@@ -21,8 +21,8 @@ export async function renderNoteById(req, res) {
 
 export async function createNote(req, res) {
     try {
-        const {title, content} = req.body;
-        const createdNote = new Notes({title, content});
+        const {title, content, theme} = req.body;
+        const createdNote = new Notes({title, content, theme});
 
         await createdNote.save()
         res.status(201).json(createdNote);
@@ -34,8 +34,8 @@ export async function createNote(req, res) {
 
 export async function updateNote(req, res) {
     try {
-        const {title, content} = req.body;
-        const updatedNote = await Notes.findByIdAndUpdate(req.params.id, {title, content});
+        const {title, content, theme} = req.body;
+        const updatedNote = await Notes.findByIdAndUpdate(req.params.id, {title, content, theme});
 
         if(!updatedNote) return res.status(200).json({message: 'Note not found'});
         res.status(200).json(updatedNote)

@@ -1,5 +1,5 @@
 .noteCard {
-    background-color: rgba(255, 251, 40, 0.911);
+    /* background-color: #FFEB3B; */
     padding: 10px;
     border-radius: 5px;
     position: relative;
@@ -12,31 +12,6 @@
 .noteCard h1 {
     font-size: 1.5rem;
 }
-
-/* .noteCard::after {
-    content: '';
-    position: absolute;
-    height: 35px;
-    width: 35px;
-    right: 0;
-    bottom: 0;
-    background-color: white;
-    border-top-left-radius: 5px;
-}
-
-.deleteBtn {
-    background-color: rgb(238, 15, 15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 3;
-    height: 30%;
-    width: 10%;
-    border-radius: 5px;
-} */
 
 .deleteIcon {
     position: absolute;

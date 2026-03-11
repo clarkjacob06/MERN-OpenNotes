@@ -1,0 +1,14 @@
+.skeletonCard {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #ebe4e4;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+/* .titleSkeleton {
+    width: 50px;
+    background-color: aqua;
+} */

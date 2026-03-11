@@ -12,8 +12,8 @@ createRoot(document.getElementById('root')).render(
       <App />
       <Toaster toastOptions={{
         style: {
-          position: 'relative',
-          top: '50px'
+          // position: 'relative',
+          // top: 110
         }
       }}/>
     </BrowserRouter>

@@ -1,0 +1,43 @@
+
+.wrapper {
+    height: 100vh;
+    width: clamp(360px, 100vw, 1280px);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 1fr;
+}
+
+.nav {
+    border: 1px solid orange;   
+}
+
+.exit {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    height: 100%;
+    padding: 5px 15px 5px 15px;
+}
+
+.exit p {
+    font-size: 1.2rem;
+}
+
+.exitIcon {
+    width: 18px;
+    height: 18px;
+}
+
+form {
+    border: 1px solid red;
+}
+
+.colorSelector {
+}
+
+.colorSelector .selection {
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+}

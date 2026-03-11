@@ -8,7 +8,11 @@ const noteSchema = new mongoose.Schema({
     content: {
         type: String,
         required: true
-    }
+    },
+    theme: {
+        type: String,
+        required: false
+    },
 }, {timestamps: true})
 
 

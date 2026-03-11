@@ -2,42 +2,81 @@ import { useState } from "react";
 import api from "../lib/axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import styles from "../css/createPage.module.css";
+
+//lucide react icons
+import { ChevronLeft } from "lucide-react";
 
 function CreatePage() {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [theme, setTheme] = useState("#FFEB3B");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-    async function handleSubmit(e) {
-        try {
-            e.preventDefault();
-            setLoading(true);
+  const colors = [
+    { hex: "#FFEB3B" },
+    { hex: "#C8E6C9" },
+    { hex: "#BBDEFB" },
+    { hex: "#E1BEE7" },
+    { hex: "#F8BBD0" },
+  ];
 
-            if(!title || !content) return toast.error('All field are required');
+  async function handleSubmit(e) {
+    try {
+      e.preventDefault();
+      setLoading(true);
 
-            await api.post('/notes', {title, content});
-            toast.success('Note created successfully');
+      if (!title || !content) return toast.error("All field are required");
 
-            navigate('/');
+      await api.post("/notes", { title, content, theme });
+      toast.success("Note created successfully");
 
-        } catch (error) {
-            toast.error('Failed to create note');
-            console.log(error)
-        }finally {
-            setLoading(false)
-        }
+      navigate("/");
+    } catch (error) {
+      toast.error("Failed to create note");
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
+  }
 
-    return(
-        <>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Enter Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
-                <textarea placeholder="Enter Text" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
-                <button type='submit'>{loading ? 'Saving..' : 'Create'}</button>
-            </form>
-        </>
-    )
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.nav}>
+        <div className={styles.exit} onClick={() => navigate('/')}>
+          <ChevronLeft className={styles.exitIcon}/>
+          <p>Exit</p>
+        </div>
+      </div>
+
+      <form onSubmit={handleSubmit} style={{backgroundColor: theme}}>
+        <input
+          type="text"
+          placeholder="Enter Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <textarea
+          placeholder="Enter Text"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        ></textarea>
+        <button type="submit">{loading ? "Saving.." : "Create"}</button>
+
+        <div className={styles.colorSelector}>
+          {colors.map((color, index) => (
+            <div className={styles.selection}
+            style={{backgroundColor: color.hex}} 
+            key={index}
+            onClick={() => setTheme(color.hex)}
+            >
+            </div>
+          ))}
+        </div>
+      </form>
+    </div>
+  );
 }
 
-export default CreatePage
+export default CreatePage;
