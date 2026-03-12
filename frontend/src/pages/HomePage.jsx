@@ -60,9 +60,7 @@ function HomePage() {
                     <input type="search" placeholder='Search note' className={styles.searchBar}/>    
                 </div>}
 
-                <div className={styles.user}>
-                    <UserRound className={styles.userIcon}/>
-                </div>
+                <UserRound className={styles.userIcon}/>
             </div>
 
             {isMobile && 
@@ -71,7 +69,7 @@ function HomePage() {
                 <input type="search" placeholder='Search note' className={styles.searchBar}/>    
             </div>}
 
-            <main>  
+            <div className={styles.main}>  
                 {notes.length <= 0 && !loading &&
                 <div className={styles.emptyState}>
                     <img src="/emptyState.png"/>
@@ -94,7 +92,7 @@ function HomePage() {
                 <button className={styles.pencilBtn} onClick={() => navigate('/create')}>
                     <Pencil className={styles.pencilIcon}/>
                 </button>
-            </main>
+            </div>
         </div>
     )
 }

@@ -48,33 +48,39 @@ function CreatePage() {
           <ChevronLeft className={styles.exitIcon}/>
           <p>Exit</p>
         </div>
+
+        <h1>Create</h1>
       </div>
 
-      <form onSubmit={handleSubmit} style={{backgroundColor: theme}}>
-        <input
-          type="text"
-          placeholder="Enter Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Enter Text"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-        <button type="submit">{loading ? "Saving.." : "Create"}</button>
+      <div className={styles.main}>
+        <form onSubmit={handleSubmit} style={{backgroundColor: theme}}>
+          <input
+            type="text"
+            placeholder="Enter Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            placeholder="Enter Text"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
 
-        <div className={styles.colorSelector}>
-          {colors.map((color, index) => (
-            <div className={styles.selection}
-            style={{backgroundColor: color.hex}} 
-            key={index}
-            onClick={() => setTheme(color.hex)}
-            >
-            </div>
-          ))}
-        </div>
-      </form>
+          <div className={styles.colorSelector}>
+            {colors.map((color, index) => (
+              <div className={styles.selection}
+              style={{backgroundColor: color.hex}} 
+              key={index}
+              onClick={() => setTheme(color.hex)}
+              >
+              </div>
+            ))}
+          </div>
+
+          <button type="submit">{loading ? "Saving.." : "Create"}</button>
+
+        </form>
+      </div>
     </div>
   );
 }
