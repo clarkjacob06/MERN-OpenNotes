@@ -6,8 +6,9 @@
 }
 
 body {
-    /* background-color: yellow; */
+    background-color: #F9FAFB;
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
