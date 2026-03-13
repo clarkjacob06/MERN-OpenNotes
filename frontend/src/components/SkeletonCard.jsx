@@ -7,6 +7,9 @@ function SkeletonCard() {
             <div className={styles.skeletonCard}>
                 <Skeleton className={styles.titleSkeleton} width='60%'></Skeleton>
                 <Skeleton className={styles.dateSkeleton} width='25%'></Skeleton>
+                <div className={styles.buttonSkeleton} >
+                    <Skeleton width={20} height={20}></Skeleton>
+                </div>
             </div>
         </>
     )

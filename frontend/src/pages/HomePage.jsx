@@ -17,6 +17,7 @@ import {Search} from 'lucide-react';
 function HomePage() {
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [search, setSearch] = useState('');
     const navigate = useNavigate();
 
     const [isMobile, setIsMobile] = useState(true);
@@ -49,6 +50,8 @@ function HomePage() {
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
+    const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(search.toLowerCase()))
+
     return(
         <div className={styles.wrapper}>
             <div className={styles.nav}>
@@ -57,7 +60,7 @@ function HomePage() {
                 {!isMobile && 
                 <div className={styles.inputContainer}>
                     <Search width={16}/>
-                    <input type="search" placeholder='Search note' className={styles.searchBar}/>    
+                    <input type="search" placeholder='Search note' className={styles.searchBar} onChange={(e) => setSearch(e.target.value)}/>    
                 </div>}
 
                 <UserRound className={styles.userIcon}/>
@@ -66,7 +69,7 @@ function HomePage() {
             {isMobile && 
             <div className={styles.inputContainer}>
                 <Search width={16}/>
-                <input type="search" placeholder='Search note' className={styles.searchBar}/>    
+                <input type="search" placeholder='Search note' className={styles.searchBar} onChange={(e) => setSearch(e.target.value)}/>    
             </div>}
 
             <div className={styles.main}>  
@@ -85,7 +88,7 @@ function HomePage() {
                 }
 
                 {loading ? Array.from({length: 10}).map((_, index) => <SkeletonCard key={index}/>) : 
-                notes.map((note) => (
+                filteredNotes.map((note) => (
                     <NoteCard noteProp={note} key={note._id} setNotesProp={setNotes}></NoteCard>
                 ))}
 

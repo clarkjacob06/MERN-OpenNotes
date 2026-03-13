@@ -41,6 +41,8 @@ function CreatePage() {
     }
   }
 
+  document.title = 'OpenNotes Create';
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.nav}>
@@ -81,7 +83,9 @@ function CreatePage() {
 
         </form>
       </div>
+
     </div>
+
   );
 }
 

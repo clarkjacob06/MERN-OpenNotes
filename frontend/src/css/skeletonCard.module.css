@@ -6,9 +6,11 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    position: relative;
 }
 
-/* .titleSkeleton {
-    width: 50px;
-    background-color: aqua;
-} */
+.buttonSkeleton {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
