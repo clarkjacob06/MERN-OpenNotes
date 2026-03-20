@@ -1,7 +1,7 @@
 import { useState } from "react";
 import api from "../lib/axios";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import {sileo} from "sileo";
 import styles from "../css/createPage.module.css";
 
 //lucide react icons
@@ -30,11 +30,13 @@ function CreatePage() {
       if (!title || !content) return toast.error("All field are required");
 
       await api.post("/notes", { title, content, theme });
-      toast.success("Note created successfully");
+      sileo.success({
+        title: 'Note created successfully',
+      })
 
       navigate("/");
     } catch (error) {
-      toast.error("Failed to create note");
+      sileo.error({title: 'Failed to create note'})
       console.log(error);
     } finally {
       setLoading(false);

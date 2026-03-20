@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../lib/axios";
-import toast from "react-hot-toast";
+import {sileo} from "sileo";
 import styles from "../css/contentPage.module.css";
 
 import {ChevronLeft} from 'lucide-react';
@@ -29,7 +29,7 @@ function ContentPage() {
         const note = await api.get(`/notes/${id}`);
         setNote(note.data);
       } catch (error) {
-        toast.error("Failed to fetch note content");
+        sileo.error({title: 'Failed to load note content'})
         console.log(error);
       } finally {
         setLoading(false);
@@ -57,10 +57,10 @@ function ContentPage() {
         theme: note.theme
       });
 
-      toast.success("Note updated successfully");
+      sileo.success({title: 'Note updated!'})
       navigate("/");
     } catch (error) {
-      toast.error("Failed to update note");
+      sileo.error({title: 'Failed to update note content'})
     }
   }
 
