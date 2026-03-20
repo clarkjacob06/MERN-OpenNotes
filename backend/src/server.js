@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import notesRouter from './routers/notesRouter.js';
+import userRouter from './routers/userRouter.js';
 import cors from 'cors';
 import path from 'path';
 
@@ -15,6 +16,7 @@ dotenv.config();
 
 app.use(express.json());
 app.use('/api/notes', notesRouter);
+app.use('/api/users', userRouter);
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../frontend/dist')));

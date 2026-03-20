@@ -2,6 +2,9 @@ import {Routes, Route} from 'react-router-dom';
 import HomePage from './pages/HomePage.jsx';
 import CreatePage from './pages/CreatePage.jsx';
 import ContentPage from './pages/ContentPage.jsx';
+import RegisterPage from './pages/RegisterPage.jsx';
+import LoginPage from './pages/loginPage.jsx';
+
 import {SkeletonTheme} from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
@@ -13,6 +16,8 @@ function App() {
           <Route path={'/'} element={<HomePage/>}></Route>
           <Route path={'/create'} element={<CreatePage/>}></Route>
           <Route path={'/content/:id'} element={<ContentPage/>}></Route>
+          <Route path={'/register'} element={<RegisterPage/>}></Route>
+          <Route path={'/login'} element={<LoginPage/>}></Route>
         </Routes>
       </SkeletonTheme>
     </>

@@ -23,16 +23,6 @@ nav h1 {
     font-weight: 700;
 }
 
-/* .user {
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px;
-} */
-
 .userIcon {
     color: black;
     border: 1px solid black;
@@ -154,6 +144,6 @@ nav h1 {
     
     .main {
         padding: 10px 20px 10px 20px;
-        grid-template-columns: repeat(auto-fit, minmax(auto, 200px));
+        grid-template-columns: repeat(auto-fit, 200px);
     }
 }

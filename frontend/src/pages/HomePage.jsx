@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import api from '../lib/axios.js';
-import toast from 'react-hot-toast';
+import {sileo} from 'sileo';
 import {useNavigate} from 'react-router-dom';
 
 import NoteCard from "../components/NoteCard.jsx";
@@ -30,7 +30,7 @@ function HomePage() {
 
                 setNotes(note.data);
             } catch (error) {
-                toast.error('Failed to fetch notes')
+                sileo.error({title: 'Failed to fetch notes'})
                 console.log(error)
             }finally{
                 setLoading(false)
@@ -63,7 +63,7 @@ function HomePage() {
                     <input type="search" placeholder='Search note' className={styles.searchBar} onChange={(e) => setSearch(e.target.value)}/>    
                 </div>}
 
-                <UserRound className={styles.userIcon}/>
+                <UserRound className={styles.userIcon} onClick={() => navigate('/register')}/>
             </div>
 
             {isMobile && 
