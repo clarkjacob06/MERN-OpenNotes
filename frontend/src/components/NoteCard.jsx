@@ -1,7 +1,7 @@
 import formatDate from "../util/formatDate";
 import { useNavigate } from "react-router-dom";
 import api from "../lib/axios.js";
-import toast from "react-hot-toast";
+import {sileo} from 'sileo';
 import styles from "../css/noteCard.module.css";
 import { Trash2 } from "lucide-react";
 
@@ -9,10 +9,9 @@ function NoteCard({ noteProp, setNotesProp }) {
   async function handleDelete(e, noteId) {
     e.stopPropagation();
     await api.delete(`/notes/${noteId}`);
+    sileo.success({title: 'Deleted successfully'});
     setNotesProp((n) => n.filter((n) => n._id !== noteId));
-    toast.success("Note deleted successfully", {
-      top: "50px",
-    });
+    sileo;
   }
 
   const navigate = useNavigate();
