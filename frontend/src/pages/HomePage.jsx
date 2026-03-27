@@ -92,9 +92,10 @@ function HomePage() {
                     <NoteCard noteProp={note} key={note._id} setNotesProp={setNotes}></NoteCard>
                 ))}
 
+                {notes.length > 0 && 
                 <button className={styles.pencilBtn} onClick={() => navigate('/create')}>
                     <Pencil className={styles.pencilIcon}/>
-                </button>
+                </button>}
             </div>
         </div>
     )

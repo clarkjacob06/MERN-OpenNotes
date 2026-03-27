@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <App />
       <Toaster position='top-center' options={{
-        fill: '#171717',
+        fill: '#1F2937',
       }}/>
     </BrowserRouter>
   </StrictMode>,

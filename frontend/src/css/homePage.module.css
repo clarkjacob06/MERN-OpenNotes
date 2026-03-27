@@ -14,7 +14,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px 0 20px;
+    padding: 0 20px;
+    grid-area: 'nav';
 }
 
 nav h1 {
@@ -63,6 +64,7 @@ nav h1 {
     justify-content: center;
     overflow-y: scroll;
     border-radius: 10px 10px 0 0;
+    grid-area: 'main';
 }
 
 .main::-webkit-scrollbar {
@@ -84,6 +86,7 @@ nav h1 {
     outline: none;
     width: 90%;
     height: 30px;
+    grid-area: 'searchBar';
 }
 
 .logo {
@@ -91,7 +94,9 @@ nav h1 {
 }
 
 .emptyState {
+    width: clamp(360px, 50%, 1200px);
     height: fit-content;
+    justify-self: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,15 +105,16 @@ nav h1 {
 }
 
 .emptyState img {
-    width: clamp(200px, 10vw, 600px);
+    width: clamp(300px, 20vw, 700px);
 }
 
 .createBtn {
-    background-color: rgb(59, 228, 8);
+    /* background-color: rgb(59, 228, 8); */
+    border: 1px solid rgb(59, 228, 8);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 8px;
     padding: 5px 10px;
     border-radius: 50px;
     margin-top: 15px;
@@ -128,6 +134,7 @@ nav h1 {
         grid-template-columns: 1fr 30vw 30px;
         grid-template-rows: 1fr;
         column-gap: 10px;
+        padding: 0 10%;
     }
 
     .user {
@@ -139,11 +146,16 @@ nav h1 {
     .wrapper {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 10% 1fr;
+        grid-template-rows: 15% 1fr;
     }
     
     .main {
         padding: 10px 20px 10px 20px;
         grid-template-columns: repeat(auto-fit, 200px);
+    }
+
+    .createBtn:hover {
+        background-color: rgb(59, 228, 8);
+        transition: .2s ease-in-out;
     }
 }
